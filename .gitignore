@@ -1,0 +1,13 @@
+
+/node_modules
+/id_rsa_ps
+
+/id_rsa_ps.pub
+
+/package-lock.json
+
+/.~lock.id_rsa_ps.pub#
+
+/week2/node_modules
+
+/week2/package-lock.json
