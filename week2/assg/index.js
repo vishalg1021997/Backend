@@ -37,42 +37,41 @@ app.get("/dogs/breed/:breed", (req, res) => {
     axios
       .get(`https://dog.ceo/api/breed/${req.params.breed}/images`)
       .then((response) => {
-        // console.log("responses", response);
         return response;
       })
-      .then((response) => res.status(200).json(response.data));
+      .then((response) => res.status(200).json(response.data))
+      .catch((err) => res.status(400).json("Some Error"));
   } catch (error) {
     res.status(400).json("Some ERROR");
   }
 });
 
 app.get("/dogs/breed/:breed/list", (req, res) => {
-    try {
-      axios
-        .get(`https://dog.ceo/api/breed/${req.params.breed}/list`)
-        .then((response) => {
-          // console.log("responses", response);
-          return response;
-        })
-        .then((response) => res.status(200).json(response.data));
-    } catch (error) {
-      res.status(400).json("Some ERROR");
-    }
-  });
+  try {
+    axios
+      .get(`https://dog.ceo/api/breed/${req.params.breed}/list`)
+      .then((response) => {
+        return response;
+      })
+      .then((response) => res.status(200).json(response.data))
+      .catch((err) => res.status(400).json("Some Error"));
+  } catch (error) {
+    res.status(400).json("Some ERROR");
+  }
+});
 
-  app.get("/dogs/breed/:breed/random", (req, res) => {
-    try {
-      axios
-        .get(`https://dog.ceo/api/breed/${req.params.breed}/images/random`)
-        .then((response) => {
-          // console.log("responses", response);
-          return response;
-        })
-        .then((response) => {
-            // res.status(200).json(response.data)
-            console.log("responses",response.data)
-         });
-    } catch (error) {
-      res.status(400).json("Some ERROR");
-    }
-  });
+app.get("/dogs/breed/:breed/random", (req, res) => {
+  try {
+    axios
+      .get(`https://dog.ceo/api/breed/${req.params.breed}/images/random`)
+      .then((response) => {
+        return response;
+      })
+      .then((response) => {
+        return res.status(200).json(response.data);
+      })
+      .catch((err) => res.status(400).json("Some Error"));
+  } catch (error) {
+    res.status(400).json("Some ERROR");
+  }
+});
